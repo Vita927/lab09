@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+//главная функций
 int main() {
     std::string name;
     std::cout << "Enter name: ";
