@@ -1,1 +1,1 @@
-# lab02
+# Lab02 project
