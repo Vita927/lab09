@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.4)
 project(print)
 
@@ -23,3 +24,12 @@ install(TARGETS print
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/print.hpp
     DESTINATION include
 )
+
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(third-party/gtest)
+    file(GLOB TEST_SOURCES tests/*.cpp)
+    add_executable(check ${TEST_SOURCES})
+    target_link_libraries(check print gtest_main)
+    add_test(NAME check COMMAND check)
+endif()
