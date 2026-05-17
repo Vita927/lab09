@@ -1,0 +1,25 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install CMake
+      run: sudo apt update && sudo apt install cmake
+    - name: Download Google Test
+      run: |
+        mkdir -p third-party
+        cd third-party
+        git clone https://github.com/google/googletest.git gtest
+        cd ..
+    - name: Configure and build
+      run: |
+        rm -rf _build
+        cmake -H. -B_build -DBUILD_TESTS=ON
+        cmake --build _build
+    - name: Run tests
+      run: |
+        cd _build
+        ctest --verbose

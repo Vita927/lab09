@@ -1,0 +1,5 @@
+# Создать ChangeLog.md
+cat > ChangeLog.md <<EOF
+* $(LANG=en_US date +"%a %b %d %Y") ${GITHUB_USERNAME} <${GITHUB_EMAIL}> 0.1.0.0
+- Initial RPM release
+EOF
