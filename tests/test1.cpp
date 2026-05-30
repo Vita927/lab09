@@ -7,7 +7,6 @@ TEST(Print, InFileStream)
     std::string filepath = "file.txt";
     std::string text = "hello";
     std::ofstream out{filepath};
-
     print(text, out);
     out.close();
 
