@@ -1,19 +1,18 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-RUN apt update
-RUN apt install -yy gcc g++ cmake
+RUN apt update && apt install -y g++ cmake
 
-COPY . print/
-WORKDIR print
+COPY . /print
+WORKDIR /print
 
-RUN cmake -H. -B_build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install
+RUN rm -rf _build
+RUN cmake -H. -B_build -DCMAKE_BUILD_TYPE=Release
 RUN cmake --build _build
-RUN cmake --build _build --target install
 
-ENV LOG_PATH /home/logs/log.txt
+ENV LOG_PATH=/logs/log.txt
 
-VOLUME /home/logs
+VOLUME /logs
 
-WORKDIR _install/bin
+WORKDIR /print/_build
 
-ENTRYPOINT ./demo
+ENTRYPOINT ["./demo"]
