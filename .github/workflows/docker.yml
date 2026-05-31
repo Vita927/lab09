@@ -7,11 +7,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    
     - name: Build Docker image
       run: docker build -t logger .
+    
+    - name: Create logs directory
+      run: mkdir -p logs
+    
     - name: Run container
-      run: |
-        mkdir -p logs
-        echo -e "text1\ntext2\ntext3" | docker run -i -v $(pwd)/logs:/home/logs/ logger
+      run: echo -e "text1\ntext2\ntext3" | docker run -i -v $(pwd)/logs:/logs logger
+    
     - name: Check result
-      run: cat logs/log.txt
+      run: |
+        ls -la logs/
+        cat logs/log.txt || echo "Log file not found"
+    
+    - name: Verify content
+      run: |
+        if [ -f logs/log.txt ]; then
+          cat logs/log.txt
+          grep -q "text1" logs/log.txt && echo "Success: text1 found"
+        else
+          echo "ERROR: log.txt not created"
+          exit 1
+        fi
