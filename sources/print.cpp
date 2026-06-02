@@ -1,11 +1,2 @@
-#include <print.hpp>
-
-void print(const std::string& text, std::ostream& out)
-{
-    out << text;
-}
-
-void print(const std::string& text, std::ofstream& out)
-{
-    out << text;
-}
+#include <iostream>
+void print(const char* text) { std::cout << text << std::endl; }
