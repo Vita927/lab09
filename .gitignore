@@ -30,3 +30,8 @@ Makefile
 
 # Логи
 *.log
+# Лишние файлы из lab08
+Dockerfile
+.travis.yml
+hello_world.cpp
+demo/
