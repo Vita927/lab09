@@ -4,19 +4,13 @@ _builds/
 build/
 .build/
 
-# Артефакты CPack
+# Артефакты
 *.tar.gz
 *.deb
 *.rpm
-*.dmg
-*.msi
-
-# Временные файлы
 *.o
 *.so
 *.a
-*.swp
-*.un~
 
 # CMake
 CMakeCache.txt
@@ -24,13 +18,23 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 
+# Временные файлы
+*.swp
+*.un~
+*~
+
 # IDE
 .vscode/
 .idea/
 
+# Загрузки
+artifacts/
+gh_*.deb
+
 # Логи
 *.log
-# Лишние файлы из lab08
+
+# Лишнее из lab08
 Dockerfile
 .travis.yml
 hello_world.cpp
