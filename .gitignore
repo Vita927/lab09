@@ -1,0 +1,32 @@
+# Сборки
+_build/
+_builds/
+build/
+.build/
+
+# Артефакты CPack
+*.tar.gz
+*.deb
+*.rpm
+*.dmg
+*.msi
+
+# Временные файлы
+*.o
+*.so
+*.a
+*.swp
+*.un~
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDE
+.vscode/
+.idea/
+
+# Логи
+*.log
